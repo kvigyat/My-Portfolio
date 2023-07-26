@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'><link rel="stylesheet" href="./login-style.css">
+
+</head>
+<style>
+  input[type=submit]{
+    background-color: #2d3b55;
+    color: #fff;
+		border: 1px solid #777;
+		border-radius: 2px;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: 21px;
+		display: block;
+		width: 100%;
+		margin-top: 20px;
+		margin-bottom: 0px;
+    height: 50px;
+  }
+  input[type=submit]:hover{
+    background: #3c4d6d;
+		}
+</style>
+<script>
+  function validate()
+  {
+    var username=document.getElementById("username").value;
+	  var password=document.getElementById("password").value;
+    if(username.trim()=="")
+			{
+				alert("Username must be filled");
+				return false;
+			}
+    if(password.trim()=="")
+		{
+				alert("Password can't be empty");
+				return false;
+		}
+  }
+</script>
+<body>
+<!-- partial:index.partial.html -->
+<div class="login-form">
+  <form action="verify.php" method="post" onsubmit="validate()">
+    <h1>Login</h1>
+    <div class="content">
+      <div class="input-field">
+        <input type="text" id="username" name="username" placeholder="Username" autocomplete="nope">
+      </div>
+      <div class="input-field">
+        <input type="password" id="password" name="password" placeholder="Password" autocomplete="new-password">
+      </div>
+      <p>Don't have an account?  <a href="signup.html" class="link"> Signup now</a></p>
+    </div>    
+       <input type="submit" value="Sign in">    
+  </form>
+</div>
+<!-- partial -->
+  <script  src="./login-script.js"></script>
+
+</body>
+</html>
