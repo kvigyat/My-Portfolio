@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>		
+		body {
+			background-color: gray;
+			font-family: Verdana;
+			text-align: center;
+		}
+
+		/* Styling the Form (Color, Padding, Shadow) */
+		form {
+			background-color: #fff;
+			max-width: 500px;
+			margin: 50px auto;
+			padding: 30px 20px;
+			box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+		}
+
+		/* Styling form-control Class */
+		.form-control {
+			text-align: left;
+			margin-bottom: 25px;
+		}
+
+		.form-control label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		.form-control input,
+		.form-control select,
+		.form-control textarea {
+			border: 1px solid #777;
+			border-radius: 2px;
+			font-family: inherit;
+			padding: 10px;
+			display: block;
+			width: 95%;
+		}
+
+	
+		.form-control input[type="radio"],
+		.form-control input[type="checkbox"] {
+			display: inline-block;
+			width: auto;
+		}
+
+		input[type=submit]{
+			background-color: #05c46b;
+			border: 1px solid #777;
+			border-radius: 2px;
+			cursor: pointer;
+			font-family: inherit;
+			font-size: 21px;
+			display: block;
+			width: 100%;
+			margin-top: 50px;
+			margin-bottom: 20px;
+		}
+		input[type=submit]:hover{
+			background-color: green;
+			color: white;
+		}
+	</style>
+	<script>
+		function validate()
+		{
+			var name=document.getElementById("name").value;
+			var age=document.getElementById("age").value;
+			var email=document.getElementById("email").value;
+			var phone=document.getElementById("number").value;
+			var campus=document.getElementById("campus").value;
+			var username=document.getElementById("username").value;
+			var password=document.getElementById("password").value;
+			var re=document.getElementById("repassword").value;
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if(name.trim()=="")
+			{
+				alert("Name must be filled");
+				return false;
+			}
+			else if(age.trim()=="")
+			{
+				alert("Age must be filled");
+				return false;
+			}
+			else if(email.trim()=="")
+			{
+				alert("Email must be filled");
+				return false;
+			}
+			if(email.match(mailformat))
+			{
+				return true;
+			}
+			else
+			{
+				alert("Please enter a valid email address");
+				return false;
+			}
+			if(phone.trim()=="")
+			{
+				alert("Phone number must be filled");
+				return false;
+			}
+			if(username.trim()=="")
+			{
+				alert("Username must be filled");
+				return false;
+			}
+			if(password.trim()=="")
+			{
+				alert("Password must be filled");
+				return false;
+			}
+			else
+			{
+				if(password.lenth<8)
+				{
+					alert("Password length must be atleast 8 charcaters");
+					return false;
+				}
+			}
+			if(repassword!=password)
+			{
+				alert("Re entered password should be same as password");
+				return false;
+			}
+			
+
+			
+		}
+	</script>
+</head>
+
+<body>
+	<h1>Signup Form</h1>
+
+	
+	<form  id="form" action="insert.php" method="post" onsubmit="return validate()">
+
+		
+		<div class="form-control">
+			<label for="name" id="label-name">
+				Name
+			</label>
+
+			
+			<input type="text"
+				id="name" name="name"
+				placeholder="Enter your name">
+		</div>
+
+		<div class="form-control">
+
+			<label for="email" id="label-email">
+				Email
+			</label>
+		
+			<input type="email"
+				id="email" name="email"
+				placeholder="Enter your email">
+		</div>
+
+		<div class="form-control">
+			<label for="age" id="label-age">
+				Age
+			</label>			
+			<input type="number" id="age" name="age"
+				placeholder="Enter your age" >
+		</div>
+		<div class="form-control">
+			<label for="number" id="label-age">
+				Phone Number
+			</label>			
+			<input type="tel" id="number" name="phone" pattern="[1-9]{1}[0-9]{9}"
+				placeholder="Enter your mobile number" >
+		</div>
+
+		<div class="form-control">
+			<label for="role" id="label-role">
+				VIT Campus?
+			</label>	
+			<select name="campus" id="campus" name="campus" required>
+				<option disabled selected value> -- select your campus -- </option>
+				<option value="Chennai">Chennai</option>
+				<option value="Vellore">Vellore</option>
+				<option value="Bhopal">Bhopal</option>
+				<option value="AP">AP</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="username" id="label-username">Set Username</label>
+			<input type="text" id="username" name="username" placeholder="Set your username">			
+		</div>
+
+		<div class="form-control">
+			<label for="password" id="label-password">Set password</label>
+			<input type="password" id="password" name="password" placeholder="Set your password">			
+		</div>
+
+		<div class="form-control">
+			<label for="repassword" id="label-repassword">Re-enter password</label>
+			<input type="password" id="repassword" placeholder="Re-enter the password">			
+		</div>
+
+		<input type="submit" value="Submit">		
+	</form>
+</body>
+</html>
